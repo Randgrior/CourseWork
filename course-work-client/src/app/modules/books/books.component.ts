@@ -20,8 +20,6 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('this.bookService.searchCriteria' + this.bookService.searchCriteria);
-    console.log('this.bookService.searchParameter' + this.bookService.searchParameter);
     if (this.bookService.searchCriteria === undefined) {
       this.bookService.getAllBooks().subscribe((bookList: Book[]) => {
         this.books = bookList;
@@ -34,7 +32,7 @@ export class BooksComponent implements OnInit {
   }
 
   onSearchClick(): void {
-    if (this.keyword.trimRight().length > 0) {
+    if (this.keyword.length > 0) {
       this.getChoice(this.choice, this.keyword);
     }
   }

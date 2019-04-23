@@ -109,11 +109,13 @@
             class="text-danger">
             <span>The password is too short</span>
           </div>
-          <!--<div style='color:#ff7355' >-->
-          <!--<span *ngIf="registerForm.get(['passwords','password']).value != registerForm.get(['passwords','confirmPassword']).value && registerForm.get(['passwords','confirmPassword']).value != null">-->
-          <!--Password does not match>-->
-          <!--</span>-->
-          <!--</div>-->
+          <div
+            *ngIf="registerForm.get('confirmPassword').touched
+            && registerForm.get('password').touched
+            && registerForm.invalid"
+            class="text-danger">
+            <span>Passwords don't match</span>
+          </div>
 
         </div>
       </div>
@@ -127,6 +129,10 @@
             class="btn btn-default btn-light">
             Register
           </button>
+          <div *ngIf="registerForm.valid && isSignUpFailed" class="alert alert-danger">
+            Sign Up failed: {{errorMessage}}
+          </div>
+
         </div>
       </div>
     </form>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthSignUpInfo} from '../../models/auth';
+import {AuthSignUpInfo, JwtResponse} from '../../models/auth';
 import {AuthService} from '../../core/services/auth/auth.service';
 import {TokenStorageService} from '../../core/services/token-storage/token-storage.service';
 import {Router} from '@angular/router';
@@ -51,26 +51,28 @@ export class RegisterComponent implements OnInit {
 
   onRegister(): void {
     this.markFormGroupTouched(this.registerForm);
-    this.signUpInfo = {
-      phone: this.registerForm.get('phone').value,
-      username: this.registerForm.get('name').value,
-      password: this.registerForm.get('password').value,
-      email: this.registerForm.get('email').value,
-      role: [ROLE_USER]
-    };
+    if (this.registerForm.valid) {
+      this.signUpInfo = {
+        phone: this.registerForm.get('phone').value,
+        username: this.registerForm.get('name').value,
+        password: this.registerForm.get('password').value,
+        email: this.registerForm.get('email').value,
+        role: [ROLE_USER]
+      };
 
-    this.authService.attempSignUp(this.signUpInfo).subscribe(
-      (data: string) => {
-        this.isSignUpFailed = false;
-        this.isSignUp = true;
-        alert('You have successfully registered');
-        this.router.navigateByUrl('/login');
-      },
-      (error: any) => {
-        this.errorMessage = error.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+      this.authService.attempSignUp(this.signUpInfo).subscribe(
+        (data: JwtResponse) => {
+          this.isSignUpFailed = false;
+          this.isSignUp = true;
+          alert('You have successfully registered');
+          this.router.navigateByUrl('/login');
+        },
+        (error: any) => {
+          this.errorMessage = error.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
+    }
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
