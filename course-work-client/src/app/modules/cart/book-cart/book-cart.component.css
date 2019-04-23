@@ -1,0 +1,15 @@
+.price {
+  font-size: 28px;
+  color: maroon;
+  text-align: right;
+  font-style: oblique;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey;
+  color: #919aa1;
+  text-align: left;
+}

@@ -1,0 +1,24 @@
+spring:
+  view:
+     prefix: /WEB-INF/jsp/
+     suffix: .jsp
+  datasource:
+    url: jdbc:mysql://localhost:3306/book_store?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#      enable_lazy_load_no_trans: true
+orm:
+  app:
+    jwtSecret: jwtGrokonezSecretKey
+    jwtExpiration: 86400
+# show generated SQL statements
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: debug

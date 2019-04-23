@@ -1,0 +1,79 @@
+<div class="container body-content">
+  <div>
+    <h1>WELCOME TO THE BOOKSHOP</h1>
+    <p class="lead">We have the largest collection of books around!</p>
+    <p
+      class="lead">
+      Prices from
+      <span
+        style="text-decoration: underline">
+            <strong>{{price}}</strong>
+        </span>
+      ! Unbelievable!
+    </p>
+    <p class="lead"></p>
+    <p class="lead">Stock flies off our digital shelves fast so don't hesitate and buy now!</p>
+    <p class="lead"><span style="font-weight: bold; text-decoration: underline">BOOK SEARCH:</span></p>
+    <p>
+      <strong style="font-weight: bold">Keyword Search:</strong>
+      <input
+        name="KeyWordSearch"
+        type="text"
+        id="searchTextBox"
+        title="Please type out whole words"
+        style="width:587px;"
+        [(ngModel)]="keyword">
+      <strong>
+        <button
+          id="MainContent_SearchButton"
+          style="font-weight: bold"
+          (click)="onSearchClick()"
+        >Search
+        </button>
+      </strong>
+    </p>
+    <p>
+      <strong style="font-weight: bold">Search Criteria:
+      </strong>
+      <span style="font-weight: bold">
+            <span
+              id="RadioButtonList1"
+              style="font-weight: normal">
+              <input
+                id="MainContent_RadioButtonList1_0"
+                type="radio"
+                name="searchCriteria"
+                value="Title"
+                checked="checked"
+                [(ngModel)]="choice"
+              >
+              <label for="MainContent_RadioButtonList1_0">Title</label>
+              <input
+                id="MainContent_RadioButtonList1_1"
+                type="radio"
+                name="searchCriteria"
+                value="Author"
+                [(ngModel)]="choice"
+              >
+              <label for="MainContent_RadioButtonList1_1">Author</label>
+              <input
+                id="MainContent_RadioButtonList1_2"
+                type="radio"
+                name="searchCriteria"
+                value="ISBN"
+                [(ngModel)]="choice"
+              >
+              <label for="MainContent_RadioButtonList1_2">ISBN</label>
+            </span>
+      </span>
+    </p>
+
+    <p></p>
+    <p>Or click here to browse from our entire range of books:
+      <strong>
+        <button style="font-weight: bold" (click)="onAllBookClick()">Browse Catalog</button>
+        <!--<input type="submit" name="ctl00$MainContent$AllButton" value="Browse Catalog" id="MainContent_AllButton" >-->
+      </strong>
+    </p>
+  </div>
+</div>

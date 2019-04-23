@@ -1,0 +1,39 @@
+<table border="0" style="width:100%">
+  <tbody>
+  <tr>
+    <td colspan="2" style="font-size:30px;color:black;text-decoration:underline;">
+      <strong><span id="book_title">{{bookEntity.title}}</span></strong>
+    </td>
+
+    <td rowspan="4" class="price">
+      <span id="price_label">Price</span>
+      <br>
+      <span id="price_sign">$</span>
+      <span id="book_price">{{bookEntity.price}}</span>
+      <br>
+      <button
+        type="submit"
+        name="button"
+        value="Add to cart"
+        id="add_to_cart_button"
+        style="color:Black;font-size:12px;font-weight:bold;"
+        (click)="onAddToCart()"
+        [disabled]="bookEntity.stock<=0"
+      >Add to cart
+      </button>
+      <br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+    </td>
+    <td>
+      <span id="book_author">{{bookEntity.author}}</span><br>
+
+      ISBN: <span id="book_isbn">{{bookEntity.isbn}}</span></td>
+  </tr>
+
+  </tbody>
+</table>
