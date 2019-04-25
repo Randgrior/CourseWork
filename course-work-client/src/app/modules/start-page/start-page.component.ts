@@ -27,24 +27,11 @@ export class StartPageComponent implements OnInit {
 
   onAllBookClick(): void {
     this.bookService.getAllBooks().subscribe(book => {
-      console.log(book);
       this.router.navigateByUrl('/books');
     });
   }
 
   onSearchClick(): void {
-    // // if (this.keyword.length > 0) {
-    //   if (this.choice === 'Title') {
-    //     this.bookService.getBooksByTitle(this.keyword).subscribe(book => {console.log(book);
-    //     });
-    //   } else if (this.choice === 'Author') {
-    //     this.bookService.getBooksByAuthor(this.keyword).subscribe(book => {console.log(book);
-    //     });
-    //   } else if (this.choice === 'ISBN') {
-    //     this.bookService.getBooksByISBN(this.keyword).subscribe(book => {console.log(book);
-    //     });
-    //   }
-    // // }
     this.bookService.searchCriteria = this.choice;
     this.bookService.searchParameter = this.keyword;
     this.router.navigateByUrl('/books');

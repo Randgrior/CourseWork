@@ -28,7 +28,7 @@ public class CartController {
     }
 
     @GetMapping("/{username}/{book_id}")
-    public Integer getBookByUser(@PathVariable String username, @PathVariable Long book_id) {
+    public Integer getCountBookByUser(@PathVariable String username, @PathVariable Long book_id) {
         return cartService.getCountOfBook(username, book_id);
     }
 

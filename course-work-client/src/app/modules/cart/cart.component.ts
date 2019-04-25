@@ -19,9 +19,22 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookService.getBooksByUser(this.token.getUsername()).subscribe((bookList: Book[]) => {
-      this.books = bookList;
-    });
+    this.uploadBooks();
   }
 
+  onEvent($event): void {
+    if ($event) {
+      setTimeout(() => {
+        this.uploadBooks();
+      }, 200);
+
+    }
+  }
+
+  uploadBooks(): void {
+    this.bookService.getBooksByUser(this.token.getUsername()).subscribe((bookList: Book[]) => {
+      this.books = bookList;
+      console.log(bookList);
+    });
+  }
 }

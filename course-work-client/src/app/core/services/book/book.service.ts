@@ -24,7 +24,6 @@ export class BookService extends BaseHttpService {
   }
 
   getBooksByTitle(title: string): Observable<Book[]> {
-    console.log(title);
     return this.get<Book[]>(`rest/book/title/${title}`);
   }
 

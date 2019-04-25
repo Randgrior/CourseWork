@@ -1,5 +1,5 @@
 <div class="container body-content">
   <div *ngFor="let book of books">
-    <app-book-cart [bookEntity]="book"></app-book-cart>
+    <app-book-cart (isReloadEvent)="onEvent($event)"  [bookEntity]="book"></app-book-cart>
   </div>
 </div>

@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {BaseHttpService} from '../base-http/base-http.service';
 import {HttpHeaders} from '@angular/common/http';
 import {Book} from '../../../models/common/book.model';
+import {Observable} from 'rxjs';
+import {Promise} from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +24,11 @@ export class CartService extends BaseHttpService {
   deleteBookFromCart(book_id: number, username: string): void {
     this.delete(`rest/cart/${username}/${book_id}`, this.httpOptions).subscribe();
   }
+
+  getCountOBook(book_id: number, username: string): Observable<number> {
+    return this.get<number>(`rest/cart/${username}/${book_id}`);
+  }
+
+
+
 }
